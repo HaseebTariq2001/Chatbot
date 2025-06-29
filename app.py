@@ -86,7 +86,6 @@
 #     app.run(host="0.0.0.0", port=8000, debug=True)
 
 
-
 import threading
 from flask import Flask, request, jsonify
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering
@@ -96,7 +95,9 @@ import torch
 from flask_cors import CORS
 import os
 import psutil
-# import gunicorn
+import sys
+
+print(f"Python version: {sys.version}")
 
 app = Flask(__name__)
 CORS(app)
@@ -178,4 +179,5 @@ def chat():
     return jsonify({"reply": answers[best_index]})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    app.run(host="0.0.0.0", port=port)

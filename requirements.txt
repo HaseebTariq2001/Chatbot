@@ -5,3 +5,4 @@ sentence-transformers==3.2.1
 pandas==2.2.3
 torch==2.5.0
 gunicorn==22.0.0
+psutil==6.0.0
